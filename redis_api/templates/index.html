@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>The Mandalorian - Alquiler de capítulos</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1>The Mandalorian</h1>
+            <p>Alquiler de capítulos</p>
+        </header>
+
+        <div class="panel">
+            <button class="btn btn-primary" onclick="cargarCapitulos()">Actualizar lista</button>
+        </div>
+
+        <div id="mensaje"></div>
+
+        <div id="capitulos" class="grid"></div>
+    </div>
+
+    <script>
+        function formatearTiempo(segundos) {
+            if (segundos <= 0) return "0s";
+            const h = Math.floor(segundos / 3600);
+            const m = Math.floor((segundos % 3600) / 60);
+            const s = segundos % 60;
+
+            if (h > 0) return `${h}h ${m}m ${s}s`;
+            if (m > 0) return `${m}m ${s}s`;
+            return `${s}s`;
+        }
+
+        function mostrarMensaje(texto, tipo = "info") {
+            const div = document.getElementById("mensaje");
+            div.className = `mensaje ${tipo}`;
+            div.innerText = texto;
+        }
+
+        async function cargarCapitulos() {
+            const res = await fetch("/capitulos");
+            const data = await res.json();
+
+            const contenedor = document.getElementById("capitulos");
+            contenedor.innerHTML = "";
+
+            data.forEach(cap => {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                let badgeClass = "estado disponible";
+                if (cap.estado === "reservado") badgeClass = "estado reservado";
+                if (cap.estado === "alquilado") badgeClass = "estado alquilado";
+
+                let acciones = "";
+                if (cap.estado === "disponible") {
+                    acciones = `
+                        <button class="btn btn-rentar" onclick="reservar(${cap.numero})">
+                            Reservar
+                        </button>
+                    `;
+                } else if (cap.estado === "reservado") {
+                    acciones = `
+                        <button class="btn btn-success" onclick="confirmarPago(${cap.numero})">
+                            Confirmar pago
+                        </button>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <h3>${cap.titulo}</h3>
+                    <p>Temporada ${cap.temporada}</p>
+                    <p class="precio">Precio: $${cap.precio}</p>
+                    <span class="${badgeClass}">${cap.estado.toUpperCase()}</span>
+                    ${cap.ttl > 0 ? `<p class="ttl">Tiempo restante: ${formatearTiempo(cap.ttl)}</p>` : ""}
+                    <div class="acciones">${acciones}</div>
+                `;
+
+                contenedor.appendChild(card);
+            });
+        }
+
+        async function reservar(numero) {
+            const res = await fetch(`/alquilar/${numero}`, {
+                method: "POST"
+            });
+
+            const data = await res.json();
+
+            if (data.ok) {
+                mostrarMensaje(data.mensaje, "ok");
+            } else {
+                mostrarMensaje(data.mensaje, "error");
+            }
+
+            cargarCapitulos();
+        }
+
+        async function confirmarPago(numero) {
+            const res = await fetch("/confirmar_pago", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    numero: numero
+                })
+            });
+
+            const data = await res.json();
+
+            if (data.ok) {
+                mostrarMensaje(`Pago confirmado por $${data.precio}. Capítulo alquilado.`, "ok");
+            } else {
+                mostrarMensaje(data.mensaje, "error");
+            }
+
+            cargarCapitulos();
+        }
+
+        cargarCapitulos();
+        setInterval(cargarCapitulos, 5000);
+    </script>
+</body>
+</html>
