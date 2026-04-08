@@ -43,6 +43,16 @@ class UserLocation(BaseModel):
     longitude: float
 
 
+def ensure_group_exists(group: str):
+    if group not in GROUPS:
+        raise HTTPException(status_code=404, detail=f"Group '{group}' not found")
+
+
+def place_exists(key: str, place_name: str) -> bool:
+    pos = r.geopos(key, place_name)
+    return bool(pos and pos[0])
+
+
 @app.get("/")
 def root():
     return {"message": "Tourism API running", "groups": list(GROUPS.keys())}
@@ -55,8 +65,7 @@ def get_groups():
 
 @app.post("/places/{group}")
 def add_place(group: str, place: Place):
-    if group not in GROUPS:
-        raise HTTPException(status_code=404, detail=f"Group '{group}' not found")
+    ensure_group_exists(group)
     key = GEO_KEY_PREFIX + group
     result = r.geoadd(key, (place.longitude, place.latitude, place.name))
     # Store metadata
@@ -71,8 +80,7 @@ def add_place(group: str, place: Place):
 
 @app.get("/places/{group}")
 def get_places(group: str):
-    if group not in GROUPS:
-        raise HTTPException(status_code=404, detail=f"Group '{group}' not found")
+    ensure_group_exists(group)
     key = GEO_KEY_PREFIX + group
     members = r.zrange(key, 0, -1)
     result = []
@@ -89,10 +97,50 @@ def get_places(group: str):
     return result
 
 
+@app.put("/places/{group}/{place_name}")
+def update_place(group: str, place_name: str, place: Place):
+    ensure_group_exists(group)
+    key = GEO_KEY_PREFIX + group
+
+    if not place_exists(key, place_name):
+        raise HTTPException(status_code=404, detail=f"Place '{place_name}' not found")
+
+    renamed = place.name != place_name
+    if renamed and place_exists(key, place.name):
+        raise HTTPException(
+            status_code=409,
+            detail=f"Place '{place.name}' already exists in group '{group}'",
+        )
+
+    target_name = place.name
+    r.geoadd(key, (place.longitude, place.latitude, target_name))
+    meta_key = f"meta:{group}:{target_name}"
+    r.hset(meta_key, mapping={
+        "name": target_name,
+        "description": place.description or "",
+        "group": group,
+    })
+
+    if renamed:
+        r.zrem(key, place_name)
+        r.delete(f"meta:{group}:{place_name}")
+
+    return {
+        "status": "updated",
+        "group": group,
+        "original_name": place_name,
+        "place": {
+            "name": target_name,
+            "latitude": place.latitude,
+            "longitude": place.longitude,
+            "description": place.description or "",
+        },
+    }
+
+
 @app.post("/nearby/{group}")
 def get_nearby(group: str, location: UserLocation, radius: float = 5.0):
-    if group not in GROUPS:
-        raise HTTPException(status_code=404, detail=f"Group '{group}' not found")
+    ensure_group_exists(group)
     key = GEO_KEY_PREFIX + group
     results = r.georadius(
         key,
@@ -120,8 +168,7 @@ def get_nearby(group: str, location: UserLocation, radius: float = 5.0):
 
 @app.post("/distance/{group}")
 def get_distance(group: str, location: UserLocation, place_name: str):
-    if group not in GROUPS:
-        raise HTTPException(status_code=404, detail=f"Group '{group}' not found")
+    ensure_group_exists(group)
     key = GEO_KEY_PREFIX + group
     # Temporarily add user location
     tmp_name = "__user_location__"
@@ -140,8 +187,7 @@ def get_distance(group: str, location: UserLocation, place_name: str):
 
 @app.delete("/places/{group}/{place_name}")
 def delete_place(group: str, place_name: str):
-    if group not in GROUPS:
-        raise HTTPException(status_code=404, detail=f"Group '{group}' not found")
+    ensure_group_exists(group)
     key = GEO_KEY_PREFIX + group
     removed = r.zrem(key, place_name)
     r.delete(f"meta:{group}:{place_name}")

@@ -7,6 +7,8 @@ const API = axios.create({
 export const getGroups = () => API.get('/groups');
 export const getPlaces = (group) => API.get(`/places/${group}`);
 export const addPlace = (group, place) => API.post(`/places/${group}`, place);
+export const updatePlace = (group, originalName, place) =>
+  API.put(`/places/${group}/${encodeURIComponent(originalName)}`, place);
 export const deletePlace = (group, name) => API.delete(`/places/${group}/${encodeURIComponent(name)}`);
 export const getNearby = (group, lat, lon, radius = 5) =>
   API.post(`/nearby/${group}?radius=${radius}`, { latitude: lat, longitude: lon });

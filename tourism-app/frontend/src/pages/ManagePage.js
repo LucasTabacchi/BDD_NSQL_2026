@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Trash2, RefreshCw, AlertTriangle } from 'lucide-react';
+import { Trash2, RefreshCw, AlertTriangle, Pencil, Save } from 'lucide-react';
 import GroupSelector from '../components/GroupSelector';
 import Toast from '../components/Toast';
-import { getGroups, getPlaces, deletePlace } from '../api';
+import { getGroups, getPlaces, deletePlace, updatePlace } from '../api';
 import './ManagePage.css';
+
+const EMPTY_FORM = { name: '', latitude: '', longitude: '', description: '' };
 
 export default function ManagePage() {
   const [groups, setGroups] = useState([]);
@@ -12,6 +14,9 @@ export default function ManagePage() {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(null);
   const [confirmDelete, setConfirmDelete] = useState(null);
+  const [editingPlace, setEditingPlace] = useState(null);
+  const [editForm, setEditForm] = useState(EMPTY_FORM);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     getGroups().then(r => {
@@ -35,6 +40,22 @@ export default function ManagePage() {
 
   useEffect(() => { load(); }, [load]);
 
+  const openEdit = (place) => {
+    setEditingPlace(place);
+    setEditForm({
+      name: place.name,
+      latitude: String(place.latitude),
+      longitude: String(place.longitude),
+      description: place.description || '',
+    });
+  };
+
+  const closeEdit = () => {
+    setEditingPlace(null);
+    setEditForm(EMPTY_FORM);
+    setSaving(false);
+  };
+
   const handleDelete = async (name) => {
     try {
       await deletePlace(selected, name);
@@ -44,6 +65,38 @@ export default function ManagePage() {
       setToast({ message: 'Error al eliminar el lugar.', type: 'error' });
     } finally {
       setConfirmDelete(null);
+    }
+  };
+
+  const handleEditChange = (key) => (event) => {
+    const { value } = event.target;
+    setEditForm((current) => ({ ...current, [key]: value }));
+  };
+
+  const handleSaveEdit = async (event) => {
+    event.preventDefault();
+    if (!editingPlace) return;
+
+    if (!editForm.name || !editForm.latitude || !editForm.longitude) {
+      setToast({ message: 'Nombre, latitud y longitud son obligatorios.', type: 'error' });
+      return;
+    }
+
+    setSaving(true);
+    try {
+      await updatePlace(selected, editingPlace.name, {
+        name: editForm.name.trim(),
+        latitude: parseFloat(editForm.latitude),
+        longitude: parseFloat(editForm.longitude),
+        description: editForm.description.trim(),
+      });
+      setToast({ message: `"${editForm.name.trim()}" actualizado correctamente.`, type: 'success' });
+      closeEdit();
+      await load();
+    } catch (error) {
+      const message = error.response?.data?.detail || 'Error al actualizar el lugar.';
+      setToast({ message, type: 'error' });
+      setSaving(false);
     }
   };
 
@@ -93,13 +146,22 @@ export default function ManagePage() {
                     {Number(p.latitude).toFixed(5)}, {Number(p.longitude).toFixed(5)}
                   </span>
                 </div>
-                <button
-                  className="btn-delete"
-                  onClick={() => setConfirmDelete(p.name)}
-                  aria-label={`Eliminar ${p.name}`}
-                >
-                  <Trash2 size={15} />
-                </button>
+                <div className="place-row-actions">
+                  <button
+                    className="btn-edit"
+                    onClick={() => openEdit(p)}
+                    aria-label={`Editar ${p.name}`}
+                  >
+                    <Pencil size={15} />
+                  </button>
+                  <button
+                    className="btn-delete"
+                    onClick={() => setConfirmDelete(p.name)}
+                    aria-label={`Eliminar ${p.name}`}
+                  >
+                    <Trash2 size={15} />
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
@@ -122,6 +184,75 @@ export default function ManagePage() {
                 Sí, eliminar
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {editingPlace && (
+        <div className="modal-overlay" role="dialog" aria-modal="true" aria-label="Editar lugar">
+          <div className="modal modal-edit">
+            <h2 className="modal-title modal-title-left">Editar lugar</h2>
+            <p className="modal-body modal-body-left">
+              Modificá los datos guardados para <strong>{editingPlace.name}</strong>.
+            </p>
+
+            <form className="edit-form" onSubmit={handleSaveEdit}>
+              <div className="input-group">
+                <label htmlFor="edit-name">Nombre</label>
+                <input
+                  id="edit-name"
+                  type="text"
+                  value={editForm.name}
+                  onChange={handleEditChange('name')}
+                  required
+                />
+              </div>
+
+              <div className="edit-grid">
+                <div className="input-group">
+                  <label htmlFor="edit-latitude">Latitud</label>
+                  <input
+                    id="edit-latitude"
+                    type="number"
+                    step="any"
+                    value={editForm.latitude}
+                    onChange={handleEditChange('latitude')}
+                    required
+                  />
+                </div>
+
+                <div className="input-group">
+                  <label htmlFor="edit-longitude">Longitud</label>
+                  <input
+                    id="edit-longitude"
+                    type="number"
+                    step="any"
+                    value={editForm.longitude}
+                    onChange={handleEditChange('longitude')}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="input-group">
+                <label htmlFor="edit-description">Descripción</label>
+                <input
+                  id="edit-description"
+                  type="text"
+                  value={editForm.description}
+                  onChange={handleEditChange('description')}
+                />
+              </div>
+
+              <div className="modal-actions">
+                <button type="button" className="btn-cancel" onClick={closeEdit} disabled={saving}>
+                  Cancelar
+                </button>
+                <button type="submit" className="btn-confirm-save" disabled={saving}>
+                  {saving ? <><RefreshCw size={15} className="spin" /> Guardando…</> : <><Save size={15} /> Guardar cambios</>}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
