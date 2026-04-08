@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0f172a" />
     <title>TurismoGeo — Puntos de Interés</title>
+    <style>
+      html, body, #root {
+        min-height: 100%;
+      }
+
+      html, body {
+        margin: 0;
+        background: #0f172a;
+        color: #f1f5f9;
+      }
+
+      body {
+        font-family: Inter, system-ui, sans-serif;
+        opacity: 0;
+        transition: opacity 0.12s ease;
+      }
+
+      #root {
+        min-height: 100vh;
+        background: #0f172a;
+      }
+
+      body.app-ready {
+        opacity: 1;
+      }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />

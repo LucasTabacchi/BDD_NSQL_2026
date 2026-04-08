@@ -40,6 +40,9 @@ export default function TourismMap({ userLat, userLon, activePlace }) {
         scrollWheelZoom: true,
       }).setView([userLat, userLon], 14);
 
+      leafletMap.current.createPane('routePane');
+      leafletMap.current.getPane('routePane').style.zIndex = '450';
+
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19,
@@ -56,6 +59,11 @@ export default function TourismMap({ userLat, userLon, activePlace }) {
       markerUser.current = L.marker([userLat, userLon], { icon: userIcon })
         .addTo(leafletMap.current)
         .bindPopup('<strong>Tu ubicación</strong>');
+
+      // Leaflet can mis-measure the container on first paint after SPA hydration.
+      setTimeout(() => {
+        leafletMap.current?.invalidateSize();
+      }, 0);
     });
 
     return () => {
@@ -64,7 +72,20 @@ export default function TourismMap({ userLat, userLon, activePlace }) {
         leafletMap.current = null;
       }
     };
-  }, []); // Only on mount
+  }, [userLat, userLon]);
+
+  useEffect(() => {
+    ensureLeaflet().then(() => {
+      const map = leafletMap.current;
+      if (!map || !markerUser.current) return;
+
+      markerUser.current.setLatLng([userLat, userLon]);
+
+      if (!activePlace) {
+        map.setView([userLat, userLon], 14, { animate: false });
+      }
+    });
+  }, [userLat, userLon, activePlace]);
 
   // React to activePlace changes — update route
   useEffect(() => {
@@ -101,14 +122,28 @@ export default function TourismMap({ userLat, userLon, activePlace }) {
       // Straight-line route
       routeLayer.current = L.polyline(
         [[userLat, userLon], [placeLat, placeLon]],
-        { color: '#38bdf8', weight: 3, dashArray: '8 6', opacity: 0.9 }
+        {
+          className: 'tourism-route-line',
+          color: '#38bdf8',
+          weight: 4,
+          dashArray: '10 8',
+          opacity: 1,
+          pane: 'routePane',
+          renderer: L.svg(),
+          lineCap: 'round',
+          lineJoin: 'round',
+        }
       ).addTo(map);
+
+      routeLayer.current.bringToFront();
 
       // Fit both points with padding
       map.fitBounds(
         [[userLat, userLon], [placeLat, placeLon]],
         { padding: [48, 48], animate: true, duration: 0.6 }
       );
+
+      map.invalidateSize();
     });
   }, [activePlace, userLat, userLon]);
 

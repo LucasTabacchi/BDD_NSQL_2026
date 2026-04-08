@@ -92,3 +92,11 @@
   font-family: 'Inter', sans-serif !important;
   background: #0f172a !important;
 }
+
+.tourism-route-line {
+  stroke: #38bdf8 !important;
+  stroke-width: 4 !important;
+  stroke-opacity: 1 !important;
+  stroke-dasharray: 10 8 !important;
+  fill: none !important;
+}
