@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* COMIC NOIR — Design System
+   All colors HSL. Tokens only.
+*/
+
+@layer base {
+  :root {
+    --background: 230 22% 7%;
+    --foreground: 40 30% 96%;
+
+    --card: 230 20% 10%;
+    --card-foreground: 40 30% 96%;
+
+    --popover: 230 22% 9%;
+    --popover-foreground: 40 30% 96%;
+
+    --primary: 0 84% 55%;
+    --primary-foreground: 40 30% 98%;
+
+    --secondary: 220 90% 56%;
+    --secondary-foreground: 40 30% 98%;
+
+    --muted: 230 15% 16%;
+    --muted-foreground: 230 10% 65%;
+
+    --accent: 45 100% 55%;
+    --accent-foreground: 230 22% 7%;
+
+    --destructive: 0 80% 50%;
+    --destructive-foreground: 40 30% 98%;
+
+    --border: 230 15% 18%;
+    --input: 230 15% 14%;
+    --ring: 0 84% 55%;
+
+    --marvel: 0 84% 55%;
+    --marvel-glow: 0 90% 65%;
+    --dc: 220 90% 56%;
+    --dc-glow: 220 95% 65%;
+
+    --radius: 0.75rem;
+
+    --gradient-marvel: linear-gradient(135deg, hsl(0 84% 55%), hsl(15 90% 50%));
+    --gradient-dc: linear-gradient(135deg, hsl(220 90% 56%), hsl(250 85% 60%));
+    --gradient-hero: radial-gradient(ellipse at top, hsl(0 84% 55% / 0.25), transparent 60%),
+                     radial-gradient(ellipse at bottom right, hsl(220 90% 56% / 0.25), transparent 60%),
+                     hsl(230 22% 7%);
+
+    --shadow-comic: 6px 6px 0 0 hsl(0 0% 0%);
+    --shadow-comic-sm: 3px 3px 0 0 hsl(0 0% 0%);
+    --shadow-glow-marvel: 0 0 40px hsl(0 84% 55% / 0.4);
+    --shadow-glow-dc: 0 0 40px hsl(220 90% 56% / 0.4);
+
+    --transition-pop: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 230 22% 7%;
+    --sidebar-foreground: 40 30% 96%;
+    --sidebar-primary: 0 84% 55%;
+    --sidebar-primary-foreground: 40 30% 98%;
+    --sidebar-accent: 230 15% 16%;
+    --sidebar-accent-foreground: 40 30% 96%;
+    --sidebar-border: 230 15% 18%;
+    --sidebar-ring: 0 84% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-image:
+      radial-gradient(circle at 20% 0%, hsl(var(--marvel) / 0.08), transparent 50%),
+      radial-gradient(circle at 80% 100%, hsl(var(--dc) / 0.08), transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Bangers', 'Space Grotesk', system-ui, sans-serif;
+    letter-spacing: 0.04em;
+  }
+}
+
+@layer components {
+  .halftone {
+    background-image: radial-gradient(hsl(0 0% 0% / 0.35) 1px, transparent 1.5px);
+    background-size: 6px 6px;
+  }
+
+  .comic-border {
+    border: 2px solid hsl(var(--foreground));
+    box-shadow: var(--shadow-comic);
+  }
+
+  .comic-border-sm {
+    border: 2px solid hsl(var(--foreground));
+    box-shadow: var(--shadow-comic-sm);
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1.5px hsl(0 0% 0%);
+    text-shadow: 3px 3px 0 hsl(0 0% 0%);
+  }
+}

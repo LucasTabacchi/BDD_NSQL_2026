@@ -1,0 +1,598 @@
+[
+  {
+    "nombre": "Iron Man",
+    "nombreReal": "Anthony Edward Stark",
+    "anioAparicion": 1963,
+    "casa": "marvel",
+    "biografia": "Genio, multimillonario, playboy y filántropo. Tony Stark construyó una armadura de alta tecnología tras ser secuestrado, convirtiéndose en el Vengador dorado y rojo que defiende al mundo con su intelecto y su corazón mecánico.",
+    "equipamiento": [
+      "Armadura Mark LXXXV",
+      "Repulsores",
+      "Reactor Arc",
+      "IA F.R.I.D.A.Y."
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/346-iron-man.jpg"
+    ]
+  },
+  {
+    "nombre": "Spider-Man",
+    "nombreReal": "Peter Benjamin Parker",
+    "anioAparicion": 1962,
+    "casa": "marvel",
+    "biografia": "Mordido por una araña radiactiva, Peter Parker obtuvo poderes arácnidos. Su tío Ben le enseñó que un gran poder conlleva una gran responsabilidad, lema que guía cada balanceo por Nueva York.",
+    "equipamiento": [
+      "Lanzatelarañas",
+      "Traje arácnido",
+      "Sentido arácnido"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/620-spider-man.jpg"
+    ]
+  },
+  {
+    "nombre": "Captain America",
+    "nombreReal": "Steven Grant Rogers",
+    "anioAparicion": 1941,
+    "casa": "marvel",
+    "biografia": "Soldado debilucho transformado en super soldado por el suero del Dr. Erskine, Steve Rogers encarna los ideales más nobles. Su escudo de vibranium es símbolo de libertad y justicia.",
+    "equipamiento": [
+      "Escudo de Vibranium",
+      "Suero del Super Soldado"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/149-captain-america.jpg"
+    ]
+  },
+  {
+    "nombre": "Thor",
+    "nombreReal": "Thor Odinson",
+    "anioAparicion": 1962,
+    "casa": "marvel",
+    "biografia": "Príncipe de Asgard y dios del trueno. Tras ser desterrado a la Tierra, Thor aprendió humildad y se convirtió en uno de los Vengadores más poderosos, blandiendo a Mjolnir contra cualquier amenaza cósmica.",
+    "equipamiento": [
+      "Mjolnir",
+      "Stormbreaker",
+      "Armadura asgardiana"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/659-thor.jpg"
+    ]
+  },
+  {
+    "nombre": "Hulk",
+    "nombreReal": "Robert Bruce Banner",
+    "anioAparicion": 1962,
+    "casa": "marvel",
+    "biografia": "Tras una sobreexposición a rayos gamma, el científico Bruce Banner se transforma en una bestia verde imparable cada vez que la furia lo domina. La criatura más fuerte del planeta.",
+    "equipamiento": [
+      "Fuerza sobrehumana"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/332-hulk.jpg"
+    ]
+  },
+  {
+    "nombre": "Black Widow",
+    "nombreReal": "Natasha Romanoff",
+    "anioAparicion": 1964,
+    "casa": "marvel",
+    "biografia": "Espía rusa entrenada desde niña en la Habitación Roja, Natasha desertó para unirse a S.H.I.E.L.D. y luego a los Vengadores. Mortal, calculadora y leal a quienes ganan su confianza.",
+    "equipamiento": [
+      "Mordedoras eléctricas",
+      "Pistolas Glock",
+      "Batones"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/107-black-widow.jpg"
+    ]
+  },
+  {
+    "nombre": "Doctor Strange",
+    "nombreReal": "Stephen Vincent Strange",
+    "anioAparicion": 1963,
+    "casa": "marvel",
+    "biografia": "Cirujano arrogante que tras un accidente buscó sanar sus manos en Kamar-Taj, descubriendo las artes místicas. Hoy es el Hechicero Supremo, defensor de la realidad.",
+    "equipamiento": [
+      "Capa de Levitación",
+      "Ojo de Agamotto",
+      "Anillos de slingring"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/226-doctor-strange.jpg"
+    ]
+  },
+  {
+    "nombre": "Black Panther",
+    "nombreReal": "T'Challa",
+    "anioAparicion": 1966,
+    "casa": "marvel",
+    "biografia": "Rey de Wakanda y heredero del manto de la pantera. Protege la tecnología de vibranium de su nación mientras lucha por la justicia global con sabiduría y honor.",
+    "equipamiento": [
+      "Traje de vibranium",
+      "Garras de energía cinética"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/106-black-panther.jpg"
+    ]
+  },
+  {
+    "nombre": "Wolverine",
+    "nombreReal": "James Howlett / Logan",
+    "anioAparicion": 1974,
+    "casa": "marvel",
+    "biografia": "Mutante con factor de curación acelerado y un esqueleto recubierto de adamantium. Más de un siglo de batallas lo convirtieron en la mejor arma viviente de los X-Men.",
+    "equipamiento": [
+      "Garras de adamantium",
+      "Traje amarillo táctico"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/717-wolverine.jpg"
+    ]
+  },
+  {
+    "nombre": "Scarlet Witch",
+    "nombreReal": "Wanda Maximoff",
+    "anioAparicion": 1964,
+    "casa": "marvel",
+    "biografia": "Bruja capaz de manipular la realidad mediante la magia del caos. Su poder, alimentado por el dolor, puede salvar al multiverso o destruirlo.",
+    "equipamiento": [
+      "Magia del caos"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/579-scarlet-witch.jpg"
+    ]
+  },
+  {
+    "nombre": "Deadpool",
+    "nombreReal": "Wade Winston Wilson",
+    "anioAparicion": 1991,
+    "casa": "marvel",
+    "biografia": "Mercenario bocazas con factor de curación extremo. Rompe la cuarta pared, hace chistes inapropiados y resuelve problemas con katanas y plomo.",
+    "equipamiento": [
+      "Katanas dobles",
+      "Pistolas Desert Eagle",
+      "Granadas"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/213-deadpool.jpg"
+    ]
+  },
+  {
+    "nombre": "Loki",
+    "nombreReal": "Loki Laufeyson",
+    "anioAparicion": 1962,
+    "casa": "marvel",
+    "biografia": "Dios del engaño, hijo adoptivo de Odín y verdadero gigante de hielo. Manipulador, encantador y a veces aliado, sus motivaciones son tan retorcidas como brillantes.",
+    "equipamiento": [
+      "Cetro",
+      "Magia ilusoria",
+      "Daga asgardiana"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/414-loki.jpg"
+    ]
+  },
+  {
+    "nombre": "Thanos",
+    "nombreReal": "Thanos",
+    "anioAparicion": 1973,
+    "casa": "marvel",
+    "biografia": "Titán loco obsesionado con equilibrar el universo eliminando la mitad de toda la vida. Reunió las Gemas del Infinito y casi lo logró.",
+    "equipamiento": [
+      "Guantelete del Infinito",
+      "Espada de doble filo"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/655-thanos.jpg"
+    ]
+  },
+  {
+    "nombre": "Star-Lord",
+    "nombreReal": "Peter Jason Quill",
+    "anioAparicion": 1976,
+    "casa": "marvel",
+    "biografia": "Mitad humano, mitad celestial, Peter Quill lidera a los Guardianes de la Galaxia con un walkman, mucha actitud y un corazón más grande de lo que admite.",
+    "equipamiento": [
+      "Blasters de elemento",
+      "Botas de impulso",
+      "Walkman"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/630-star-lord.jpg"
+    ]
+  },
+  {
+    "nombre": "Gamora",
+    "nombreReal": "Gamora Zen Whoberi Ben Titan",
+    "anioAparicion": 1975,
+    "casa": "marvel",
+    "biografia": "La mujer más letal de la galaxia, hija adoptiva de Thanos y guardiana redimida. Su filo es tan certero como su búsqueda de redención.",
+    "equipamiento": [
+      "Espada Godslayer"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/275-gamora.jpg"
+    ]
+  },
+  {
+    "nombre": "Vision",
+    "nombreReal": "Vision",
+    "anioAparicion": 1968,
+    "casa": "marvel",
+    "biografia": "Androide sintético creado por Ultron y completado por los Vengadores, alimentado por la Gema de la Mente. Sereno, lógico y profundamente humano.",
+    "equipamiento": [
+      "Gema de la Mente"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/697-vision.jpg"
+    ]
+  },
+  {
+    "nombre": "Daredevil",
+    "nombreReal": "Matthew Michael Murdock",
+    "anioAparicion": 1964,
+    "casa": "marvel",
+    "biografia": "Abogado ciego de Hell's Kitchen cuyos demás sentidos son sobrehumanos. De día defiende a inocentes en tribunales, de noche en los tejados.",
+    "equipamiento": [
+      "Bastón billy club",
+      "Traje de Daredevil"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/201-daredevil.jpg"
+    ]
+  },
+  {
+    "nombre": "Magneto",
+    "nombreReal": "Erik Magnus Lehnsherr",
+    "anioAparicion": 1963,
+    "casa": "marvel",
+    "biografia": "Sobreviviente del Holocausto y mutante maestro del magnetismo. Para él, la supervivencia mutante justifica cualquier medio.",
+    "equipamiento": [
+      "Casco anti-telepatía",
+      "Capa magnética"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/423-magneto.jpg"
+    ]
+  },
+  {
+    "nombre": "Storm",
+    "nombreReal": "Ororo Munroe",
+    "anioAparicion": 1975,
+    "casa": "marvel",
+    "biografia": "Mutante capaz de controlar el clima planetario. Adorada como diosa en África, líder de los X-Men y reina de Wakanda.",
+    "equipamiento": [
+      "Control climático"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/638-storm.jpg"
+    ]
+  },
+  {
+    "nombre": "Venom",
+    "nombreReal": "Edward Charles Allan Brock",
+    "anioAparicion": 1988,
+    "casa": "marvel",
+    "biografia": "Periodista fusionado con un simbionte alienígena. Juntos forman un antihéroe imprevisible con apetito por los chocolates… y por las cabezas de los malos.",
+    "equipamiento": [
+      "Simbionte alienígena"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/687-venom.jpg"
+    ]
+  },
+  {
+    "nombre": "Superman",
+    "nombreReal": "Clark Joseph Kent / Kal-El",
+    "anioAparicion": 1938,
+    "casa": "dc",
+    "biografia": "Último hijo de Krypton, criado en Smallville. Bajo el sol amarillo de la Tierra, sus poderes lo convierten en el símbolo definitivo de esperanza.",
+    "equipamiento": [
+      "Capa kryptoniana"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/644-superman.jpg"
+    ]
+  },
+  {
+    "nombre": "Batman",
+    "nombreReal": "Bruce Wayne",
+    "anioAparicion": 1939,
+    "casa": "dc",
+    "biografia": "Tras presenciar el asesinato de sus padres, Bruce Wayne se entrenó hasta convertirse en el detective y vigilante más temido de Gotham. La oscuridad es su aliada.",
+    "equipamiento": [
+      "Batitraje",
+      "Batarangs",
+      "Cinturón multiusos",
+      "Batimóvil"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/70-batman.jpg"
+    ]
+  },
+  {
+    "nombre": "Wonder Woman",
+    "nombreReal": "Diana Prince",
+    "anioAparicion": 1941,
+    "casa": "dc",
+    "biografia": "Princesa amazona de Themyscira, embajadora del amor y la verdad. Su lazo obliga a decir la verdad y sus brazaletes detienen balas.",
+    "equipamiento": [
+      "Lazo de la Verdad",
+      "Brazaletes de sumisión",
+      "Tiara",
+      "Espada"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/720-wonder-woman.jpg"
+    ]
+  },
+  {
+    "nombre": "The Flash",
+    "nombreReal": "Bartholomew Henry Allen",
+    "anioAparicion": 1956,
+    "casa": "dc",
+    "biografia": "Un rayo y un baño de químicos convirtieron al forense Barry Allen en el hombre más rápido del mundo, conectado a la mística Fuerza de la Velocidad.",
+    "equipamiento": [
+      "Traje aerodinámico"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/263-flash.jpg"
+    ]
+  },
+  {
+    "nombre": "Green Lantern",
+    "nombreReal": "Harold Jordan",
+    "anioAparicion": 1959,
+    "casa": "dc",
+    "biografia": "Piloto de pruebas elegido por un anillo de poder para custodiar el Sector 2814. Su voluntad da forma a cualquier construcción de luz esmeralda.",
+    "equipamiento": [
+      "Anillo de poder",
+      "Batería de poder"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/306-hal-jordan.jpg"
+    ]
+  },
+  {
+    "nombre": "Aquaman",
+    "nombreReal": "Arthur Curry / Orin",
+    "anioAparicion": 1941,
+    "casa": "dc",
+    "biografia": "Rey de la Atlántida, mitad humano mitad atlante. Comanda los siete mares y a toda la vida marina con su tridente de Poseidón.",
+    "equipamiento": [
+      "Tridente de Atlán",
+      "Armadura dorada"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/38-aquaman.jpg"
+    ]
+  },
+  {
+    "nombre": "Cyborg",
+    "nombreReal": "Victor Stone",
+    "anioAparicion": 1980,
+    "casa": "dc",
+    "biografia": "Estrella del fútbol americano reconstruido con tecnología alienígena tras un accidente. Mitad hombre, mitad máquina, conectado a toda red digital.",
+    "equipamiento": [
+      "Cañón sónico",
+      "Boom Tube integrado"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/194-cyborg.jpg"
+    ]
+  },
+  {
+    "nombre": "Green Arrow",
+    "nombreReal": "Oliver Jonas Queen",
+    "anioAparicion": 1941,
+    "casa": "dc",
+    "biografia": "Multimillonario abandonado en una isla, regresó convertido en un arquero implacable que defiende a los oprimidos de Star City.",
+    "equipamiento": [
+      "Arco compuesto",
+      "Flechas trick",
+      "Carcaj"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/298-green-arrow.jpg"
+    ]
+  },
+  {
+    "nombre": "Shazam",
+    "nombreReal": "William Joseph Batson",
+    "anioAparicion": 1940,
+    "casa": "dc",
+    "biografia": "Un niño de 14 años que al gritar '¡SHAZAM!' se transforma en un campeón adulto con los poderes de seis dioses.",
+    "equipamiento": [
+      "Rayo mágico"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/156-captain-marvel.jpg"
+    ]
+  },
+  {
+    "nombre": "Nightwing",
+    "nombreReal": "Richard John Grayson",
+    "anioAparicion": 1940,
+    "casa": "dc",
+    "biografia": "El primer Robin, ahora líder por derecho propio. Acróbata sin igual y protector de Blüdhaven con sus escrímas.",
+    "equipamiento": [
+      "Escrímas eléctricos",
+      "Línea de gancho"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/491-nightwing.jpg"
+    ]
+  },
+  {
+    "nombre": "Harley Quinn",
+    "nombreReal": "Harleen Frances Quinzel",
+    "anioAparicion": 1992,
+    "casa": "dc",
+    "biografia": "Psiquiatra brillante que se enamoró de su paciente, el Joker, perdiendo la cordura y ganando un mazo gigante. Caótica, libre y temible.",
+    "equipamiento": [
+      "Mazo gigante",
+      "Bate de béisbol",
+      "Pistola de confeti"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/309-harley-quinn.jpg"
+    ]
+  },
+  {
+    "nombre": "Joker",
+    "nombreReal": "Desconocido",
+    "anioAparicion": 1940,
+    "casa": "dc",
+    "biografia": "El Príncipe Payaso del Crimen. Sin pasado verificable y sin moral alguna, su único objetivo es probar que cualquiera puede caer en la locura con el día apropiado.",
+    "equipamiento": [
+      "Cartas afiladas",
+      "Gas de la risa",
+      "Pistola flor"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/370-joker.jpg"
+    ]
+  },
+  {
+    "nombre": "Catwoman",
+    "nombreReal": "Selina Kyle",
+    "anioAparicion": 1940,
+    "casa": "dc",
+    "biografia": "Ladrona felina de Gotham, oscila entre villana y aliada de Batman. Ágil, seductora y siempre un paso por delante.",
+    "equipamiento": [
+      "Látigo",
+      "Garras",
+      "Goggles de visión"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/165-catwoman.jpg"
+    ]
+  },
+  {
+    "nombre": "Martian Manhunter",
+    "nombreReal": "J'onn J'onzz",
+    "anioAparicion": 1955,
+    "casa": "dc",
+    "biografia": "El último marciano verde, telépata, cambiaformas y conciencia moral de la Liga de la Justicia. Solitario, pero indispensable.",
+    "equipamiento": [
+      "Telepatía",
+      "Cambio de forma"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/432-martian-manhunter.jpg"
+    ]
+  },
+  {
+    "nombre": "Supergirl",
+    "nombreReal": "Kara Zor-El",
+    "anioAparicion": 1959,
+    "casa": "dc",
+    "biografia": "Prima de Superman, también sobreviviente de Krypton. Más joven, más rebelde, igual de poderosa.",
+    "equipamiento": [
+      "Poderes kryptonianos"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/643-supergirl.jpg"
+    ]
+  },
+  {
+    "nombre": "Black Canary",
+    "nombreReal": "Dinah Laurel Lance",
+    "anioAparicion": 1947,
+    "casa": "dc",
+    "biografia": "Heroína con un grito sónico capaz de derribar muros. Maestra en artes marciales y miembro clave de los Birds of Prey.",
+    "equipamiento": [
+      "Traje de cuero",
+      "Botas de combate"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/98-black-canary.jpg"
+    ]
+  },
+  {
+    "nombre": "Hawkman",
+    "nombreReal": "Carter Hall",
+    "anioAparicion": 1940,
+    "casa": "dc",
+    "biografia": "Príncipe egipcio reencarnado a lo largo de los siglos. Vuela con alas de metal Nth y blande armas antiguas con destreza milenaria.",
+    "equipamiento": [
+      "Alas de Nth Metal",
+      "Maza",
+      "Casco"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/312-hawk.jpg"
+    ]
+  },
+  {
+    "nombre": "Zatanna",
+    "nombreReal": "Zatanna Zatara",
+    "anioAparicion": 1964,
+    "casa": "dc",
+    "biografia": "Hechicera y maga escénica que conjura hechizos pronunciando las palabras al revés. Una de las usuarias de magia más poderosas del DCU.",
+    "equipamiento": [
+      "Sombrero de copa",
+      "Varita mágica"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/730-zatanna.jpg"
+    ]
+  },
+  {
+    "nombre": "Lex Luthor",
+    "nombreReal": "Alexander Joseph Luthor",
+    "anioAparicion": 1940,
+    "casa": "dc",
+    "biografia": "El humano más brillante del planeta, obsesionado con destruir a Superman. Su intelecto y recursos lo hacen tan peligroso como cualquier metahumano.",
+    "equipamiento": [
+      "Armadura warsuit",
+      "Kryptonita"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/405-lex-luthor.jpg"
+    ]
+  },
+  {
+    "nombre": "Darkseid",
+    "nombreReal": "Uxas",
+    "anioAparicion": 1970,
+    "casa": "dc",
+    "biografia": "Dios tirano de Apokolips, en busca de la Ecuación Anti-Vida para esclavizar todas las mentes del universo. Mal cósmico encarnado.",
+    "equipamiento": [
+      "Rayos Omega"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/204-darkseid.jpg"
+    ]
+  },
+  {
+    "nombre": "Robin",
+    "nombreReal": "Damian Wayne",
+    "anioAparicion": 2006,
+    "casa": "dc",
+    "biografia": "Hijo de Bruce Wayne y Talia al Ghul, criado por la Liga de Asesinos. Brillante, letal y arrogante, pero comprometido con el legado de su padre.",
+    "equipamiento": [
+      "Katana",
+      "Shurikens",
+      "Capa"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/561-robin.jpg"
+    ]
+  },
+  {
+    "nombre": "Bane",
+    "nombreReal": "Bane",
+    "anioAparicion": 1993,
+    "casa": "dc",
+    "biografia": "Genio táctico criado en una prisión, potenciado por el suero Veneno. Fue quien rompió la espalda de Batman.",
+    "equipamiento": [
+      "Suero Veneno",
+      "Máscara táctica"
+    ],
+    "imagenes": [
+      "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/60-bane.jpg"
+    ]
+  }
+]
