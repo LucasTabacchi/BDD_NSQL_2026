@@ -6,6 +6,7 @@ import { SuperheroCard } from "@/components/SuperheroCard";
 import { SuperheroFormDialog } from "@/components/SuperheroFormDialog";
 import { useSuperheroes } from "@/hooks/useSuperheroes";
 import type { House } from "@/types/superhero";
+import { Database, GraduationCap, Shield } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 interface HeroesListPageProps {
@@ -106,9 +107,36 @@ const HeroesListPage = ({ filterHouse }: HeroesListPageProps) => {
         )}
       </section>
 
-      <footer className="border-t border-border mt-16">
-        <div className="container py-8 text-center text-xs text-muted-foreground">
-          HEROVERSE SPA · Práctica #6 — Bases de Datos NoSQL · UADER
+      <footer className="mt-16 border-t border-foreground/10 bg-card/50">
+        <div className="h-1 bg-gradient-to-r from-marvel via-accent to-dc" />
+        <div className="container py-6">
+          <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+            <div>
+              <div className="flex items-center justify-center gap-2 sm:justify-start">
+                <Shield className="h-5 w-5 text-accent" aria-hidden="true" />
+                <p className="font-display text-xl tracking-wider text-foreground">
+                  HEROVERSE SPA
+                </p>
+              </div>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Catálogo interactivo de superhéroes Marvel y DC
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground sm:justify-end">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-background/60 px-3 py-1">
+                <Database className="h-3.5 w-3.5 text-secondary" aria-hidden="true" />
+                Práctica #6
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-background/60 px-3 py-1">
+                Bases de Datos NoSQL
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-background/60 px-3 py-1">
+                <GraduationCap className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+                UADER
+              </span>
+            </div>
+          </div>
         </div>
       </footer>
 
