@@ -117,17 +117,9 @@ const HeroesListPage = ({ filterHouse }: HeroesListPageProps) => {
             </p>
           </div>
 
-          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 font-medium text-foreground/80">
-            <a className="transition-colors hover:text-accent" href="/">
-              Todos
-            </a>
-            <a className="transition-colors hover:text-primary" href="/marvel">
-              Marvel
-            </a>
-            <a className="transition-colors hover:text-secondary" href="/dc">
-              DC
-            </a>
-          </nav>
+          <p className="text-xs font-medium uppercase tracking-[0.28em] text-foreground/60">
+            Marvel · DC · Multiverso
+          </p>
         </div>
       </footer>
 
