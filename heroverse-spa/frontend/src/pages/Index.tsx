@@ -106,9 +106,28 @@ const HeroesListPage = ({ filterHouse }: HeroesListPageProps) => {
         )}
       </section>
 
-      <footer className="border-t border-border mt-16">
-        <div className="container py-8 text-center text-xs text-muted-foreground">
-          HEROVERSE SPA · Práctica #6 — Bases de Datos NoSQL · UADER
+      <footer className="mt-16 border-t border-foreground/10 bg-background/80">
+        <div className="container flex flex-col gap-4 py-8 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="font-display text-2xl tracking-wider text-foreground">
+              HEROVERSE
+            </p>
+            <p className="mt-1 max-w-md">
+              Explora, filtra y gestiona personajes legendarios del multiverso.
+            </p>
+          </div>
+
+          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 font-medium text-foreground/80">
+            <a className="transition-colors hover:text-accent" href="/">
+              Todos
+            </a>
+            <a className="transition-colors hover:text-primary" href="/marvel">
+              Marvel
+            </a>
+            <a className="transition-colors hover:text-secondary" href="/dc">
+              DC
+            </a>
+          </nav>
         </div>
       </footer>
 
