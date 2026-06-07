@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>TP6 · Aeropuertos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+<style>
+  html,body{margin:0;height:100%;font-family:system-ui,sans-serif}
+  #map{height:100vh}
+  #panel{position:absolute;top:10px;right:10px;background:#fff;padding:12px;border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:1000;max-width:280px;font-size:13px}
+  #panel h3{margin:0 0 6px;font-size:14px}
+  #popular{margin:0;padding-left:18px;max-height:200px;overflow:auto}
+  button{cursor:pointer;padding:4px 8px;border:1px solid #ccc;background:#f7f7f7;border-radius:4px}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="panel">
+  <h3>✈️ Aeropuertos</h3>
+  <div id="count">Cargando...</div>
+  <hr/>
+  <strong>Top populares</strong>
+  <button onclick="loadPopular()" style="float:right">↻</button>
+  <ol id="popular"></ol>
+  <hr/>
+  <small>Clic en un marcador para ver detalles (cuenta como visita).</small>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+const API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+  ? 'http://localhost:3000' : `http://${location.hostname}:3000`;
+
+const map = L.map('map').setView([20, 0], 2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap'
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({ chunkedLoading: true });
+map.addLayer(cluster);
+
+async function loadAirports() {
+  const res = await fetch(`${API}/airports`);
+  const data = await res.json();
+  document.getElementById('count').textContent = `${data.length} aeropuertos`;
+  data.forEach(a => {
+    if (a.lat == null || a.lng == null) return;
+    const m = L.marker([a.lat, a.lng]);
+    m.on('click', async () => {
+      try {
+        const r = await fetch(`${API}/airports/${a.iata_faa}`);
+        const d = await r.json();
+        m.bindPopup(`
+          <b>${d.name}</b><br>
+          ${d.city || ''}<br>
+          IATA: <b>${d.iata_faa}</b> · ICAO: ${d.icao || '-'}<br>
+          Alt: ${d.alt} ft · TZ: ${d.tz || '-'}<br>
+          <small>Lat ${d.lat.toFixed(3)}, Lng ${d.lng.toFixed(3)}</small>
+        `).openPopup();
+        loadPopular();
+      } catch (e) { console.error(e); }
+    });
+    cluster.addLayer(m);
+  });
+}
+
+async function loadPopular() {
+  const res = await fetch(`${API}/airports/popular?top=10`);
+  const data = await res.json();
+  document.getElementById('popular').innerHTML =
+    data.map(a => `<li><b>${a.iata_faa}</b> — ${a.name || ''} <small>(${a.visits})</small></li>`).join('')
+    || '<li><small>Sin visitas aún</small></li>';
+}
+
+loadAirports();
+loadPopular();
+</script>
+</body>
+</html>
